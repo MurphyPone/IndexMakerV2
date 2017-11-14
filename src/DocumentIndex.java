@@ -10,7 +10,7 @@ public class DocumentIndex extends TreeMap<String, IndexEntry> { //Represents th
 	public void addWord(String word, int lnNum) { 
 		//if(this.containsKey(word) )
 		if(this.containsKey(word)) {	//If the IE at the keyStr exists, add the number 
-			this.get(word).add(lnNum);
+			this.get(word).add(lnNum);	//TODO toUPPER keys
 		} else { //IE doesn't exist for the given word
 			this.put(word, new IndexEntry(word, lnNum));
 		}
