@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.Set;
 
 public class IndexMaker {
   public static void main(String[] args) throws IOException {
@@ -52,8 +53,15 @@ public class IndexMaker {
 
     // Save index:
 
-    for (IndexEntry entry : index)
-      outputFile.println(entry);
+    Set<String> keys = index.keySet();	//returns the set of keys	
+    									//Thanks patrick --do not use me
+    									//put in tostring
+    for(String entry : keys) {
+        outputFile.println(index.get(entry));
+    }
+    
+   // for (IndexEntry entry : index)
+     // outputFile.println(entry);
 
     // Finish:
 

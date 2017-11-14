@@ -1,13 +1,20 @@
 import java.util.TreeSet;
 
 public class IndexEntry implements Comparable<IndexEntry> {
-	private String word;	//the individual word
+	private String word;	//the individual word to match to a key 
 	private TreeSet<Integer> numSet; //Contains line numbers where <word> occurs 
 	
 	//Default constructor
 	public IndexEntry(String a) {
 		word = a.toUpperCase();
 		numSet = new TreeSet<Integer>();
+	}
+	
+	//Better constructor
+	public IndexEntry(String a, int lnNum) {
+		word = a.toUpperCase();
+		numSet = new TreeSet<Integer>();
+		numSet.add(lnNum);
 	}
 	
 	//Adds 

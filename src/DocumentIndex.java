@@ -1,24 +1,19 @@
 import java.util.TreeMap;
 
-public class DocumentIndex extends TreeMap<String, Integer> { //Represents the entire index for the document, list of all its index entries	
+public class DocumentIndex extends TreeMap<String, IndexEntry> { //Represents the entire index for the document, list of all its index entries	
 	
 	public DocumentIndex() {
 		super();
 	}
 	
+	//Only thing to be modified?
 	public void addWord(String word, int lnNum) { 
-		//TODO PICKUP HERE
-		
-		/*
-		int index = foundOrInserted(word);	//Gets the alphabetical index of the given word in the overall "book" Index
-	
-		if(index > -1) {		//The word exists within the Index 
-			IndexEntry entry = this.get(index);	//temp var for the matching entry 
-			entry.getNumSet().add(lnNum);	//Adds the lnNum to the entry's list of nums
-		} else { //If index ! >-1 then the given word isn't a real word and shouldn't be added
-			System.out.println(word); //empty strings
+		//if(this.containsKey(word) )
+		if(this.containsKey(word)) {	//If the IE at the keyStr exists, add the number 
+			this.get(word).add(lnNum);
+		} else { //IE doesn't exist for the given word
+			this.put(word, new IndexEntry(word, lnNum));
 		}
-		*/
 	}
 	
 	public void addAllWords(String str, int lnNum) { 
