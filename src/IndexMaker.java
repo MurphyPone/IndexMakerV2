@@ -40,24 +40,22 @@ public class IndexMaker {
     PrintWriter outputFile = new PrintWriter(new FileWriter(fileName));
 
     // Create index:
-
     DocumentIndex index = new DocumentIndex();
 
     String line;
     int lineNum = 0;
-    while ((line = inputFile.readLine()) != null)
-    {
+    while ((line = inputFile.readLine()) != null) {
       lineNum++;
       index.addAllWords(line, lineNum);
     }
 
     // Save index:
-
     Set<String> keys = index.keySet();	//returns the set of keys	
     									//Thanks patrick --do not use me
     									//put in tostring
-    for(String entry : keys) {
+    for(String entry : keys) {	//For each key in the set of keys corresponding to the TreeMap: index
         outputFile.println(index.get(entry));
+        System.out.println("the word being added : " + entry);
     }
     
    // for (IndexEntry entry : index)

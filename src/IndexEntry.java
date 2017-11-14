@@ -5,14 +5,14 @@ public class IndexEntry implements Comparable<IndexEntry> {
 	private TreeSet<Integer> numSet; //Contains line numbers where <word> occurs 
 	
 	//Default constructor
-	public IndexEntry(String a) {
-		word = a.toUpperCase();
+	public IndexEntry(String theWord) {
+		word = theWord.toUpperCase();
 		numSet = new TreeSet<Integer>();
 	}
 	
 	//Better constructor
-	public IndexEntry(String a, int lnNum) {
-		word = a.toUpperCase();
+	public IndexEntry(String theWord, int lnNum) {
+		word = theWord.toUpperCase();
 		numSet = new TreeSet<Integer>();
 		numSet.add(lnNum);
 	}
@@ -35,11 +35,11 @@ public class IndexEntry implements Comparable<IndexEntry> {
 	
 	public String toString() {	
 		String result = word + " ";	
-				for (Integer i : numSet) {
-			if(i == numSet.last() )
-				result += i ; //Adds the line where the number appears "foo	4, 5"
+		for (Integer i : numSet) {	//For each int in the numset which contains lnNums
+			if(i == numSet.last() )	//If it's the last one, don't add a comma
+				result += i.toString(); //Adds the line where the number appears "foo	4, 5"
 			else 
-				result += i + ", ";
+				result += i.toString() + ", ";
 		}
 		return result;
 	}
