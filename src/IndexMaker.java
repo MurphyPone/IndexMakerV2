@@ -19,22 +19,21 @@ public class IndexMaker {
     String fileName;
 
     // Open input file
-    if (args.length > 0)
-    		fileName = args[0];
-    else{
+    if (args.length > 0) 
+    		fileName = args[0];	//Input = first arg
+    	else {
     		System.out.print("\nEnter input file name: ");
-    		fileName = keyboard.nextLine().trim();
+    		fileName = keyboard.nextLine().trim(); //Input = user input
     }
 
     BufferedReader inputFile = new BufferedReader(new FileReader(fileName), 1024);
 
     // Create output file:
     if (args.length > 1)
-    		fileName = args[1];		//REUSES fileNAME WHICH IS CLEVER
-    else {
-    	//MODIFIED ACCORDING TO INSTRUCTIONs
-    		System.out.print("\nEnter output file name: ");
-      	fileName = args[0] + " index";	//TODO This puts index after extension
+    		fileName = args[1];	//Output = second arg
+    else {	//Input supplied, but no output
+    		System.out.println(getPrefix(fileName) + "Index" + getExtension(fileName));		
+      	fileName = getPrefix(fileName) + "Index" + getExtension(fileName);
     }
 
     PrintWriter outputFile = new PrintWriter(new FileWriter(fileName));
@@ -53,20 +52,29 @@ public class IndexMaker {
     Set<String> keys = index.keySet();	//returns the set of keys	
     									//Thanks patrick --do not use me
     									//put in tostring
-    for(String entry : keys) {	//For each key in the set of keys corresponding to the TreeMap: index
+    for(String entry : keys) 	//For each key in the set of keys corresponding to the TreeMap: index
         outputFile.println(index.get(entry));
-        System.out.println("the word being added : " + entry);
-    }
-    
-   // for (IndexEntry entry : index)
-     // outputFile.println(entry);
-
+   
     // Finish:
-
     inputFile.close();
     outputFile.close();
 
     keyboard.close();
     System.out.println("Done.");
+  }
+  
+  public static String getExtension(String in) {
+	  int dot = in.indexOf(".");	//Finds the first period
+	  //Check if there is an extension 
+	  if(!(dot == -1)) //if there is at least one . denoting a file extension
+		   return in.substring(dot);	//Clips the input so that it just has the extension 
+	  return "";	//Return an empty string, the file extension does not exist
+  }
+  
+  public static String getPrefix(String in) {
+	  int dot = in.indexOf(".");
+	  if(!(dot == -1))	//If there is a .
+		  return in.substring(0, dot);	//return everything up to the first .
+	  return in;	 //Else, return the whole input string
   }
 }

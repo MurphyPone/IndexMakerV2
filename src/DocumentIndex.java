@@ -10,7 +10,7 @@ public class DocumentIndex extends TreeMap<String, IndexEntry> { //Represents th
 	public void addWord(String word, int lnNum) { 
 		if(!word.equals("") ) {
 			String key = word.toUpperCase();
-				//this. is unnecessary, but helps me understand what's going on
+				//"this." is unnecessary, but helps me understand what's going on
 			if(this.containsKey(key)) {	//If the IE at the keyStr exists, add the number 
 				this.get(key).add(lnNum);	
 			} else { //IE doesn't exist for the given word
