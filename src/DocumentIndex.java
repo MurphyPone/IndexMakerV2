@@ -4,6 +4,7 @@
  * @date 11/15/17
  */
 
+import java.util.Set;
 import java.util.TreeMap;
 
 public class DocumentIndex extends TreeMap<String, IndexEntry> {	//Extends the TreeMap class, inheriting all of a TreeMap's methods, and allowing me to define more, specific to Treemaps 	
@@ -46,7 +47,7 @@ public class DocumentIndex extends TreeMap<String, IndexEntry> {	//Extends the T
 	 * 
 	 * @author MurphyP1
 	 * @date 11/15/17
-	 * @method addWord
+	 * @method addAllWords
 	 * 
 	 * @param str a String which represents a full line in a document
 	 * @param lnNum an int which is added to a respective IndexEntry's numSet
@@ -59,7 +60,27 @@ public class DocumentIndex extends TreeMap<String, IndexEntry> {	//Extends the T
 				if(!word.equals("")); 	//Skip empty strings, redundant check on regex working properly
 					addWord(word, lnNum);
 			}
-		} else {System.out.println("Invalid String");}	//makes it here, but doesn't print...
+		} else {/*System.out.println("Invalid String"); */ }
+	}
+	
+	/**
+	 * A toString method which formats a series of IndexEntries in a readable, succinct manner
+	 * 
+	 * @author MurphyP1
+	 * @date 11/15/17
+	 * @method toString
+	 * 
+	 * @return a String with the pretty-formatted IndexEntries
+	 */
+	public String toString() {
+		String result ="";
+		Set<String> keys = keySet();	//returns the set of keys	
+		for(String entry : keys)  	//For each key in the set of keys corresponding to the TreeMap: index
+			if(entry.equals(lastKey())) //If it's the last word, don't add a new line too
+				result += get(entry);	//Adds the IndexEntry for each word in the Keyset to it's own line
+			else 
+				result += get(entry) + "\n";
+		return result;
 	}
 }
 
