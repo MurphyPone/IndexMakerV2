@@ -32,7 +32,7 @@ public class IndexMaker {
     if (args.length > 1)
     		fileName = args[1];	//Output = second arg
     else {	//Input supplied, but no output
-    		System.out.println(getPrefix(fileName) + "Index" + getExtension(fileName));		
+    	System.out.println(getPrefix(fileName) + "Index" + getExtension(fileName));		
       	fileName = getPrefix(fileName) + "Index" + getExtension(fileName);
     }
 
