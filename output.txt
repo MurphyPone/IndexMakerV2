@@ -1,6 +1,0 @@
-A 8, 12
-BOY 8
-GUU 12
-IS 6, 10
-PETER 6
-WHO 10
